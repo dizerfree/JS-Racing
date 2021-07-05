@@ -1,3 +1,7 @@
+:root {
+    --height-elem: 100px
+}
+
 /* Reset CSS*/
 
 html, body, div, span, applet, object, iframe,
@@ -26,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 ol, ul {
 	list-style: none;
@@ -50,16 +55,73 @@ table {
     display: none;
 }
 
+.game {
+    height: 100%;
+    display: flex;
+}
+
+.start {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: calc(50px - 1.5rem);
+    width: 100%;
+    padding: 1rem;
+    background: #222;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    font: inherit;
+    background-color: lightgrey;
+    color: black;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    padding: 5px 15px;
+}
+
+.btn:hover {
+    background-color: lightseagreen;
+    color: #fff;
+}
+
+.btn:disabled {
+    background-color: #ccc;
+    color: #ddd;
+}
+
+.score {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background: #222;
+    color: lightseagreen;
+    height: calc(50px - 1.5rem);
+    padding: 1rem;
+}
+
+.btn:not(:last-child) {
+    margin-right: 30px;
+}
+
 .car, .enemy {
-    width: 50px;
-    height: 100px;
-    background: transparent url('./image/player.png') center / cover no-repeat;
+    width: calc(var(--height-elem) / 2);
+    height: var(--height-elem);
+    background: transparent url('./image/player.png') center / contain no-repeat;
     position: absolute;
+    left: 125px;
+    bottom: 10px;
 }
 
 .gameArea {
     width: 300px;
-    height: 100%;
     position: relative;
     margin: auto;
     background: #222;
@@ -69,42 +131,18 @@ table {
 .line {
     position: absolute;
     width: 10px;
-    height: 50px;
+    height: calc(var(--height-elem) / 2);
     background: #fff;
-    left: 145px;
+    left: 145px
 }
 
-.start {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    margin: 0;
-    padding: 2rem 0;
-    text-align: center;
-    z-index: 200;
-    color: #fff;
-    font-size: 1.5rem;
-    background: black;
-    cursor: pointer;
-    font-family: sans-serif;
-    font-weight: 700;
-}
-
-.score {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    margin: 0;
-    padding: 1rem 0;
-    text-align: center;
-    z-index: 200;
-    color: skyblue;
-    font-size: 1.5rem;
-    background: black;
-    cursor: pointer;
-    font-family: sans-serif;
-    font-weight: 500;
-
+.visually-hidden {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0 !important;
+    border: 0 !important;
+    height: 1px !important; 
+    width: 1px !important; 
+    overflow: hidden;
 }
